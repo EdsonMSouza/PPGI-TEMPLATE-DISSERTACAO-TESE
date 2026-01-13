@@ -1,0 +1,167 @@
+\PassOptionsToPackage{abnt-etal-cite=2,abnt-etal-text=emph}{abntex2cite}
+\documentclass{uninove-ppgi} %courier ou times
+
+\usepackage{tabularx}
+\usepackage{makecell}
+\renewcommand{\arraystretch}{1.1}
+
+\begin{document}
+\lstset{
+    language=xml,
+    tabsize=3,
+    frame=shadowbox,
+    rulesepcolor=\color{gray},
+    xleftmargin=20pt,
+    framexleftmargin=15pt,
+    keywordstyle=\color{blue}\bf,
+    commentstyle=\color{OliveGreen},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=5pt,
+    breaklines=true,
+    showstringspaces=false,
+    basicstyle=\footnotesize,
+    emph={food,name,price},emphstyle={\color{magenta}}
+}
+
+% parametros de capa e folha de rosto (é necessário configurar todos)
+\Universidade{UNIVERSIDADE NOVE DE JULHO - UNINOVE}
+\Programa{PROGRAMA DE PÓS GRADUAÇÃO EM INFORMÁTICA E GESTÃO DO CONHECIMENTO - PPGI}
+\Autor{NOME DO DISCENTE}
+
+\Titulo{TÍTULO DO TRABALHO}
+\Tipoexame{qualificação} % qualificação ou defesa
+\Titulacao{Mestre} % Mestre ou Doutor
+\Orientador{Dr(a). Nome do(a) Orientador(a)} % Obrigatório
+\Coorientador{Dr(a). Nome do(a) Coorientador(a)} % Se não houver, deve ser comentada a linha no arquivos uninove-ppgi.cls
+
+% Descomentar as linhas abaixo e no arquivo "uninove-ppgi.cls" para utilizar na disciplina de seminários
+%\Ingresso{XX/20XX}
+%\Linha{LP1 - Modelagem e Otimização Computacional}
+%\Linha{LP2 - Sistemas Inteligentes}
+%\Linha{LP3 - Gestão da Tecnologia da Informação e Conhecimento}
+\Ano{202X} % inserir o ano correspondente
+
+% gera a capa
+\capa
+
+% gera folha de rosto
+\folharosto 
+
+% Ficha catalográfica
+%\includepdf[pages=-]{fichaCatalografica.pdf}
+
+% Ficha de aprovação
+% \includepdf[pages=-]{parecer_assinado.pdf}
+
+% ##################### Início dos elementos pré-textuais ############################
+
+% Dedicatória (Opcional)
+\centeredchapterstyle
+\input{pre_textuais/01_dedicatoria.tex}
+\thispagestyle{empty}
+\clearpage
+
+% Agradecimentos (Opcional)
+\input{pre_textuais/02_agradecimentos.tex}
+\thispagestyle{empty}
+\clearpage
+
+% Epígrafe (Opcional)
+\input{pre_textuais/03_epigrafe.tex}
+
+% Resumo (Obrigatório)
+\input{pre_textuais/04_resumo.tex}
+
+% Abstract (Obrigatório)
+\input{pre_textuais/05_abstract.tex}
+
+% Sumário (Obrigatório)
+\begingroup
+\makeatletter \let\ps@plain\ps@empty \makeatother
+\tableofcontents
+\endgroup
+\thispagestyle{empty}
+
+% Lista de figuras
+\renewcommand*\listfigurename{Lista de Ilustrações}
+\listoffigures
+\thispagestyle{empty}
+
+% Lista de tabelas
+\listoftables
+\thispagestyle{empty}
+
+% Lista de quadros
+\listofquadros
+\thispagestyle{empty}
+
+% Lista de algoritmos (Opcional)
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{Lista de Algoritmos}
+%\thispagestyle{empty}
+
+% Lista de abreviaturas (Opcional)
+\begin{listaabreviaturas}
+MM & Morfologia matemática \\
+CC & Componente conexo \\
+EE & Elemento estruturante \\
+\end{listaabreviaturas}
+
+% Lista de símbolos (Opcional)
+\begin{listasimbolos}%
+    \simbolos{Conceitos básicos} {%
+        $ \mathbb{Z} $ & Conjunto dos números inteiros \\
+        $ \mathbb{N} $ & Conjunto dos números naturais \\
+        $ \mathbb{R} $ & Conjunto dos números reais
+    }
+
+    \simbolos{Imagens} {%
+        $ f \text{ e } g $ & Variáveis que representam imagens \\
+        $ p, q \in \mathcal{D} $ & Variáveis que representam pares $ (x,y) $ aqui chamados de \textit{pixels}
+    }
+\end{listasimbolos}
+
+% ############### Fim dos elementos pré-textuais ######################
+
+\regularchapterstyle
+
+% ############### Início dos Capítulos (Obrigatório ) #################
+
+% Introdução
+\input{capitulos/cap01_introducao.tex}
+
+% Base Teórica
+\input{capitulos/cap02_fundamentacao_teorica.tex}
+
+% Metodologia
+\input{capitulos/cap03_metodologia.tex}
+
+% Análise de Resultados e Discussão
+\input{capitulos/cap04_analise_discussao.tex}
+
+% Conclusão
+\input{capitulos/cap05_conclusao.tex}
+
+% Trabalhos Futuros
+\input{capitulos/cap06_trabalhos_futuros.tex}
+
+% ##################### Fim dos Capítulos ############################
+
+% Bibliografia (Obrigatório)
+\bibliography{refs}
+
+% ##################### Apêndices ############################
+\renewcommand{\appendixtitle}{Apêndices}
+\begin{appendixenv}
+    \input{pos_textuais/01_apendice.tex}
+\end{appendixenv}
+
+% ##################### Anexos ############################
+\renewcommand{\appendixtitle}{Anexos}
+\begin{appendixenv}
+    \input{pos_textuais/02_anexos.tex}
+\end{appendixenv}
+
+\end{document}
