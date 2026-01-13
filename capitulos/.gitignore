@@ -10,8 +10,6 @@
 *.fdb_latexmk
 *.fls
 *.gz
-*.png
-*.jpg
 *.bib
 *.brf
 *.zip
